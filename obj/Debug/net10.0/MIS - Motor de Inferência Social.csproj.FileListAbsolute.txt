@@ -1,0 +1,15 @@
+/Users/rodrigoklayn/Documents/MIS - Motor de Inferência Social/obj/Debug/net10.0/MIS - Motor de Inferência Social.GeneratedMSBuildEditorConfig.editorconfig
+/Users/rodrigoklayn/Documents/MIS - Motor de Inferência Social/obj/Debug/net10.0/MIS - Motor de Inferência Social.AssemblyInfoInputs.cache
+/Users/rodrigoklayn/Documents/MIS - Motor de Inferência Social/obj/Debug/net10.0/MIS - Motor de Inferência Social.AssemblyInfo.cs
+/Users/rodrigoklayn/Documents/MIS - Motor de Inferência Social/obj/Debug/net10.0/MIS - Motor de Inferência Social.csproj.CoreCompileInputs.cache
+/Users/rodrigoklayn/Documents/MIS - Motor de Inferência Social/obj/Debug/net10.0/MIS - Motor de Inferência Social.sourcelink.json
+/Users/rodrigoklayn/Documents/MIS - Motor de Inferência Social/bin/Debug/net10.0/MIS - Motor de Inferência Social
+/Users/rodrigoklayn/Documents/MIS - Motor de Inferência Social/bin/Debug/net10.0/MIS - Motor de Inferência Social.deps.json
+/Users/rodrigoklayn/Documents/MIS - Motor de Inferência Social/bin/Debug/net10.0/MIS - Motor de Inferência Social.runtimeconfig.json
+/Users/rodrigoklayn/Documents/MIS - Motor de Inferência Social/bin/Debug/net10.0/MIS - Motor de Inferência Social.dll
+/Users/rodrigoklayn/Documents/MIS - Motor de Inferência Social/bin/Debug/net10.0/MIS - Motor de Inferência Social.pdb
+/Users/rodrigoklayn/Documents/MIS - Motor de Inferência Social/obj/Debug/net10.0/MIS - Motor de Inferência Social.dll
+/Users/rodrigoklayn/Documents/MIS - Motor de Inferência Social/obj/Debug/net10.0/refint/MIS - Motor de Inferência Social.dll
+/Users/rodrigoklayn/Documents/MIS - Motor de Inferência Social/obj/Debug/net10.0/MIS - Motor de Inferência Social.pdb
+/Users/rodrigoklayn/Documents/MIS - Motor de Inferência Social/obj/Debug/net10.0/MIS - Motor de Inferência Social.genruntimeconfig.cache
+/Users/rodrigoklayn/Documents/MIS - Motor de Inferência Social/obj/Debug/net10.0/ref/MIS - Motor de Inferência Social.dll
