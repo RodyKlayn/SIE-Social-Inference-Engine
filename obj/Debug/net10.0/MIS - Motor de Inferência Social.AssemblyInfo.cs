@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MIS - Motor de Inferência Social")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c905e8eb573376e64db8c6c5769c35561ddd641e")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+cd1e88df1e3b5c6ea839e4de2af73edd0c11c144")]
 [assembly: System.Reflection.AssemblyProductAttribute("MIS - Motor de Inferência Social")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MIS - Motor de Inferência Social")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
