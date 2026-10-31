@@ -39,6 +39,7 @@ public class NPCMind
     private int _fear;
     private int _loyalty;
     private int _greed;
+    private Layer brain;
 
     // Propriedade publica (o "porteiro" que o resto do codigo acessa)
     public int Fear
@@ -64,6 +65,13 @@ public class NPCMind
 
     public string Name { get; set; } = "";
 
+    public NPCMind(string name)
+    {
+        Name = name;
+        brain = new Layer(3, 5); // O cérebro nasce aqui com 3 neurônios e 5 entradas!
+    }
+
+
     public PhysicalAction React(TypeIntention intention, string focusWord, WorldState world)
     {
         Random dice = new Random();
@@ -73,28 +81,40 @@ public class NPCMind
         if (intention == TypeIntention.Intimidate && d20 >= 10) Fear += 25;
         if (intention == TypeIntention.Corrupt && d20 >= 10) Greed += 25;
 
-        // 2. BALANÇA DE INFERÊNCIA (Calcula os 3 impulsos em simultâneo)
+        // Prepara os sentidos do mundo convertidos em numeros decimais de 0.0 a 1.0
+        double[] inputs = new double[]
+        {
+            Fear / 100.0,
+            Loyalty / 100.0,
+            Greed / 100.0,
+            world.PlayerIsArmed ? 1.0 : 0.0,
+            world.PlayerIsHidden ? 1.0 : 0.0
+        };
 
-        // Impulso de Ceder (Medo + Pressão Física vs Lealdade)
-        int yieldScore = Fear - Loyalty;
-        if (world.PlayerIsArmed) yieldScore += 25;
-        if (world.PlayerIsHidden) yieldScore += 20;
-        if (intention == TypeIntention.Intimidate) yieldScore += d20;
+        // O cerebro pensa! a camada processa os inputs e devolve as 3 ativacoes (0 a 1)
+        double[] outputs = brain.Forward(inputs);
 
-        // Impulso de Negociar (Ganância + Suborno vs Testemunhas)
-        int bargainScore = Greed - (Fear / 2);
-        if (intention == TypeIntention.Corrupt) bargainScore += (d20 * 2);
-        if (world.HasWitnesses) bargainScore -= 50; // Medo de ser visto a aceitar suborno!
+        double yieldScore = outputs[0]; // Força no neuronio de Ceder
+        double bargainScore = outputs[1]; // Força do nauronio de neogciar
+        double defyScore = outputs[2]; // Força do neuronio de Desafiar
 
-        // Impulso de Desafiar/Resistir (Lealdade + Segurança Tática)
-        int defyScore = Loyalty - Fear;
-        if (!world.PlayerIsArmed) defyScore += 30;
-        if (world.HasWitnesses) defyScore += 40;
+        // Se o jogador ameaçou, penaliza o score de negociação
+        if (WasThreatened)
+        {
+            bargainScore -= 0.4;
+        }
 
-        // 3. Descobre  qual foi a decisão vencedora (a maior nota ganha)
+        // Descobre qual o neuronio que disparou com mais força (o vencedor)
         InferredDecision decision = InferredDecision.Defy;
-        if (yieldScore >= bargainScore && yieldScore >= defyScore) decision = InferredDecision.Yield;
-        else if (bargainScore >= yieldScore && bargainScore >= defyScore) decision = InferredDecision.Bargain;
+        if (yieldscore >= bargainScore && yieldScore >= defyScore) 
+        {
+            decision = InferredDecision.Yield;
+        }
+
+        else if (bargainScore >= yieldScore && bargainScore >= defyScore)
+        {
+            decision = InferredDecision.Bargain;
+        }
 
         if (Patience <= 0 && decision == InferredDecision.Defy)
         {
@@ -209,8 +229,7 @@ class Program
     static void Main()
     {
         // 1. Instanciar o NPC na memoria
-        NPCMind guarda = new NPCMind();
-        guarda.Name = "Roberto";
+        NPCMind guarda = new NPCMind("Roberto");
         guarda.Fear = 20;
         guarda.Loyalty = 60;
         guarda.Greed = 40;
